@@ -6,7 +6,6 @@ define(["jquery", "backbone"],
 
         // Creates a new Backbone Model class object
         var Model = Backbone.Model.extend({
-
             // Model Constructor
             initialize: function() {
 

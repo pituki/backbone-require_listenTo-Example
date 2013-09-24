@@ -24,6 +24,14 @@ server.configure(function() {
   server.use(server.router);
 
 });
+server.get( '/rest/data', delayedCall );
+var delayedCall = function(req, res){
+	setInterval(function(){
+
+		res.send('hello world');
+
+	}, 3000);
+};
 
 // SERVER
 // ======
