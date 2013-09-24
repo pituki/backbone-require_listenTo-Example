@@ -1,8 +1,8 @@
 // DesktopRouter.js
 // ----------------
-define(["jquery", "backbone", "models/Model", "views/View", "collections/colors"],
+define(["jquery", "backbone", "models/Model", "views/View", "views/matchingColors"],
 
-    function($, Backbone, Model, View, Collection) {
+    function($, Backbone, Model, View, MatchingColorsView) {
 
         var DesktopRouter = Backbone.Router.extend({
 
@@ -17,16 +17,23 @@ define(["jquery", "backbone", "models/Model", "views/View", "collections/colors"
             routes: {
 
                 // When there is no hash on the url, the home method is called
-                "": "index"
+	            "": "index",
+	            "colors": "colors"
 
             },
 
-            index: function() {
+	        index: function() {
 
-                // Instantiates a new view which will render the header text to the page
-                new View();
+		        // Instantiates a new view which will render the header text to the page
+		        new View();
 
-            }
+	        },
+	        colors: function() {
+
+		        // Instantiates a new view which will render the header text to the page
+		        new MatchingColorsView();
+
+	        }
 
         });
 

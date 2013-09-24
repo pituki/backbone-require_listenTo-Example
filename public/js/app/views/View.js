@@ -20,9 +20,9 @@ define(["jquery", "backbone", "text!templates/heading.html", 'views/colors', 'vi
 			// Renders the view's template to the UI
 			render: function () {
 
-				this.$el.append("<div class='half colors'></div>").append("<div class='half matchingColors'></div>");
-				this.$el.append(new ColorsView().$el );
-				this.$el.append(new MatchingColorsViewolorsView().$el );
+				this.$el.append("<div class='half colors'></div><div class='half matchingColors'></div>");
+				this.$el.find('.colors').append(new ColorsView().$el );
+				this.$el.find('.matchingColors').append(new MatchingColorsViewolorsView().$el );
 
 				// Maintains chainability
 				return this;
