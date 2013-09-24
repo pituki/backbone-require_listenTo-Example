@@ -1,46 +1,38 @@
 // View.js
 // -------
-define(["jquery", "backbone", "models/Model", "text!templates/heading.html"],
+define(["jquery", "backbone", "text!templates/heading.html", 'views/colors', 'views/matchingColors'],
 
-    function($, Backbone, Model, template){
+	function ($, Backbone, template , ColorsView, MatchingColorsViewolorsView) {
 
-        var View = Backbone.View.extend({
+		var View = Backbone.View.extend({
 
-            // The DOM Element associated with this view
-            el: ".example",
+			// The DOM Element associated with this view
+			el: ".main",
 
-            // View constructor
-            initialize: function() {
+			// View constructor
+			initialize: function () {
 
-                // Calls the view's render method
-                this.render();
+				// Calls the view's render method
+				this.render();
 
-            },
 
-            // View Event Handlers
-            events: {
+			},
+			// Renders the view's template to the UI
+			render: function () {
 
-            },
+				this.$el.append("<div class='half colors'></div>").append("<div class='half matchingColors'></div>");
+				this.$el.append(new ColorsView().$el );
+				this.$el.append(new MatchingColorsViewolorsView().$el );
 
-            // Renders the view's template to the UI
-            render: function() {
+				// Maintains chainability
+				return this;
 
-                // Setting the view's template property using the Underscore template method
-                this.template = _.template(template, {});
+			}
+		});
 
-                // Dynamically updates the UI with the view's template
-                this.$el.html(this.template);
+		// Returns the View class
+		return View;
 
-                // Maintains chainability
-                return this;
-
-            }
-
-        });
-
-        // Returns the View class
-        return View;
-
-    }
+	}
 
 );

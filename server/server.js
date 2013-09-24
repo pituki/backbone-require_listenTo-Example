@@ -24,14 +24,27 @@ server.configure(function() {
   server.use(server.router);
 
 });
-server.get( '/rest/data', delayedCall );
 var delayedCall = function(req, res){
-	setInterval(function(){
+	res.writeHead(200, { 'Content-Type': 'application/json'});
+	setTimeout(function(){
+		var json = require("./data/sample.json");
+		console.log(json);
+		res.end(JSON.stringify(json));
 
-		res.send('hello world');
+	}, 1000);
+};
+var delayedCall2 = function(req, res){
+	res.writeHead(200, { 'Content-Type': 'application/json'});
+	setTimeout(function(){
+		var json = require("./data/sample2.json");
+		console.log(json);
+		res.end(JSON.stringify(json));
 
 	}, 3000);
 };
+server.get( '/rest/data', delayedCall );
+server.get( '/rest/data2', delayedCall2 );
+
 
 // SERVER
 // ======
